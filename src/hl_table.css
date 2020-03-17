@@ -1,0 +1,9 @@
+.headRow {
+    height: 30px;
+    text-align: center;
+    border: 1px solid #cdcdcd;
+}
+.hl_headGroup {
+    display: flex;
+    height: 30px;
+}
