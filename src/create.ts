@@ -11,8 +11,8 @@ type rowData =  colData[];
 
 type TabHead = Head[]; // 对于多行表头的处理
 type Head = {
-    field: string, // 一列的字段名
-    name: string, // 列名
+    field?: string, // 一列的字段名
+    headerName: string, // 列名
     id?: string, // id
     children?: TabHead | null, // 子元素
 };
@@ -32,6 +32,10 @@ class HLTable {
 
         // 自已他建一个div做为输出div
         let outDiv = document.createElement('div');
+        outDiv.classList.add('hltabContainer');
+        // 给一个默认高宽
+        outDiv.style.width = '98vw';
+        outDiv.style.height = '80vh';
 
         // 处理表头生成一个表头
         let headDom = this.createHeader(this.options.tabHeader);
@@ -62,45 +66,9 @@ class HLTable {
         type tempHead = {width, height, info};
         type tempAll = tempHead[][];
         let pushArr: tempHead[] = [], allIn: tempHead[][] = [];
-        
-        for (let i = 0, len = header.length; i < len; i++) {
-            let item = header[i];
-            if (item.children == null) { // 如果不存在
-                pushArr.push({width: 1, height: 1, info: item})
-            } else {
-                pushArr.push({width: 1 * item.children.length, height: 1 * item.children.length,
-                     info: item})
-            }
-        }
-        allIn.push(pushArr);
-        headEnd(pushArr, allIn);
 
-        let i = 0;
-        function headEnd(parr: tempHead[], allIn: tempHead[][]) {
-            let temp = false;
-            let arr = [];
-            i++;
-            // if (i > 6) {return}
-            for (let i = 0; i < parr.length; i++) {
-                let item = parr[i].info;
-                console.log(item, item.children == null);
-                if (item.children == null) {
-                    arr.push({width: 1, height: 1, info: item})
-                } else {
-                    temp = true;
-                    arr.push({width: 1 * item.children.length, height: 1 * item.children.length,
-                        info: item})
-                }
-            }
-            if (temp) {
-                // 添加了一行在递归一次看是否还一行
-                allIn.push(arr);
-                headEnd(arr, allIn);
-            } else {
-                // allIn.push(arr);
-                return ;
-            }
-        }
+        changeChilderToArr(header, allIn);
+        
 
         for (let i = 0; i < allIn.length; i++) {
             let f = document.createElement('div');
@@ -111,9 +79,9 @@ class HLTable {
                 hs.style.width = (jitem.width * defWidth)  + 'px'; // 设置样式 style 还是class
                 hs.classList.add(`headRow`, `headRow_${i}`); // 添加通用样式
                 if (i == allIn.length - 1) {
-                    hs.innerText = jitem.info.name;
+                    hs.innerText = jitem.info.headerName;
                 } else {
-                    if (jitem.info.children != null) {hs.innerText = jitem.info.name;}
+                    if (jitem.info.children != null) {hs.innerText = jitem.info.headerName;}
                 }
                 f.appendChild(hs);
             }
@@ -143,6 +111,152 @@ class HLTable {
         }
 
         ndom.appendChild(outDiv);
+    }
+}
+
+var mokHeader = {
+    "header":[
+        {
+            "children":[
+                {
+                    "headerName":"日期",
+                    "field":"date"
+                },
+                {
+                    "headerName":"客户姓名",
+                    "field":"customer_name"
+                },
+                {
+                    "headerName":"客户级别",
+                    "field":"level"
+                },
+                {
+                    "headerName":"省（直辖市）",
+                    "field":"addr_province"
+                },
+                {
+                    "headerName":"地（市）",
+                    "field":"addr_city"
+                },
+                {
+                    "headerName":"县（市）",
+                    "field":"addr_country"
+                },
+                {
+                    "headerName":"乡镇",
+                    "field":"addr_detail"
+                },
+                {
+                    "headerName":"电话",
+                    "field":"phone"
+                }
+            ],
+            "headerName":"客户信息"
+        },
+        {
+            "children":[
+                {
+                    "headerName":"产品简称",
+                    "field":"shangpinjc"
+                },
+                {
+                    "headerName":"产品大类",
+                    "field":"zhizaobm"
+                },
+                {
+                    "headerName":"产品类别",
+                    "field":"dingdanlb"
+                },
+                {
+                    "headerName":"型号规格",
+                    "field":"dangci"
+                },
+                {
+                    "headerName":"其他",
+                    "field":"qita"
+                }
+            ],
+            "headerName":"产品信息"
+        },
+        {
+            "children":[
+                {
+                    "headerName":"销售模式",
+                    "field":"xiaoshoums"
+                },
+                {
+                    "headerName":"销量",
+                    "field":"xiaoliang"
+                },
+                {
+                    "headerName":"销售单价",
+                    "field":"xiaoshoudj"
+                },
+                {
+                    "headerName":"成本单价",
+                    "field":"benyuedj"
+                },
+                {
+                    "headerName":"销售收入",
+                    "field":"xiaoshousr"
+                },
+                {
+                    "headerName":"销售成本",
+                    "field":"xiaoshoucb"
+                },
+                {
+                    "headerName":"毛利",
+                    "field":"maoli"
+                },
+                {
+                    "headerName":"毛利率",
+                    "field":"maolil"
+                }
+            ],
+            "headerName":"销售盈亏"
+        },
+        {
+            "children":[
+                {
+                    "headerName":"现金销售",
+                    "field":"cash"
+                },
+                {
+                    "headerName":"欠款销售",
+                    "field":"qiankuane"
+                },
+                {
+                    "headerName":"提货方式",
+                    "field":"tihuofs"
+                },
+                {
+                    "headerName":"经手人",
+                    "field":"jingshour"
+                }
+            ],
+            "headerName":"责任信息"
+        }
+    ]
+}
+
+function changeChilderToArr(header: TabHead, newArr = []) {
+    let arr = [], nextArr = [], temp = false;
+    for (let i = 0; i < header.length; i++) {
+        let item = header[i];
+        let w = item.children ? item.children.length : 1;
+        arr.push({info: item, width: w, height: 1, children: item.children});
+        if (item.children) {
+            temp = true;
+            nextArr.push(...item.children)
+            // if (item.notOne)
+            // changeChilderToArr(item.children);
+        } else {
+            nextArr.push(item)
+        }
+    }
+    newArr.push(arr);
+    if (temp) {
+        changeChilderToArr(nextArr, newArr);
     }
 }
 

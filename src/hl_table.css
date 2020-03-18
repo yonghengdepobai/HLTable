@@ -1,7 +1,14 @@
+.hltabContainer {
+    overflow-x: auto;
+    border: 1px solid;
+}
+
 .headRow {
     height: 30px;
     text-align: center;
     border: 1px solid #cdcdcd;
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
 .hl_headGroup {
     display: flex;
