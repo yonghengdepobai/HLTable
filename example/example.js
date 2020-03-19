@@ -8,15 +8,25 @@
 window.onload = function(e) {
     console.log('||||||',e, HLTable);
     var htab = HLTable.default;
-    console.log(htab);
+    // console.log(htab);
+
+
+    // 生成大数据
+    let arr = [];
+    for (let i = 0; i < 1000; i++) {
+        // console.log(i);
+        arr.push(...this.mok2.list);
+    }
+    console.log(arr.length);
+    this.mok2.list = arr;
     
     var tab = new htab({
         // tabHeader: [{
         //     "headerName":"日期",
         //     "field":"date"
         // }],
-        tabHeader: this.mokHeader.header,
-        tabBody: [],
+        tabHeader: this.mok2.header,
+        tabBody: this.mok2.list,
         Dom: document.getElementById('example'),
     });
     // var tab = new HLTable();
@@ -25,6 +35,10 @@ window.onload = function(e) {
 
 var mokHeader = {
     "header":[
+        {
+            "headerName":"日1111期",
+            "field":"datssse"
+        },
         {
             "children":[
                 {
@@ -147,3 +161,359 @@ var mokHeader = {
         }
     ]
 }
+
+
+var mok2 = {
+    "header":[
+        {
+            "headerName":"费用项目",
+            "field":"name",
+            edit: true,
+            fixed: 'left',
+        },
+        {
+            "headerName":"业务类别",
+            "field":"yw_type_name"
+        },
+        {
+            "headerName":"费用金额",
+            "field":"spending"
+        },
+        {
+            "headerName":"经手人",
+            "field":"handlers"
+        },
+        {
+            "headerName":"费用项目",
+            "field":"clname"
+        },
+        {
+            "headerName":"业务类别",
+            "field":"clyw_type_name"
+        },
+        {
+            "headerName":"费用金额",
+            "field":"clspending"
+        },
+        {
+            "headerName":"经手人",
+            "field":"clhandlers"
+        }
+    ],
+
+    "list":[
+        {
+            "name":"经营费用合计",
+            "yw_type_name":"",
+            "spending":"0.00",
+            "handlers":"",
+            "dept_id":null,
+            "clname":"车油费",
+            "clyw_type_name":"",
+            "clspending":0,
+            "clhandlers":""
+        },
+        
+    ]
+
+}
+
+var ss = [
+    {
+        "name":"调拨运费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"车修费",
+        "clyw_type_name":"",
+        "clspending":0,
+        "clhandlers":""
+    },
+    {
+        "name":"销售运费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"车杂费",
+        "clyw_type_name":"",
+        "clspending":0,
+        "clhandlers":""
+    },
+    {
+        "name":"其他运费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"差旅费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"差旅费补助",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"市内交通费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"业务招待费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"办公费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"通讯费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"水费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"电费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"气费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"库房\厂房租赁费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"门市租赁费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"住房租赁费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"办公室租赁费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"行政管理费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"广告宣传费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"会务费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"产品维修费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"手续费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"返利",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"项目施工费用",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"其他经营费用",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"私车公用-车油费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"私车公用-车修费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    },
+    {
+        "name":"私车公用-车杂费",
+        "yw_type_name":"",
+        "spending":0,
+        "handlers":"",
+        "dept_id":null,
+        "clname":"",
+        "clyw_type_name":"",
+        "clspending":"",
+        "clhandlers":""
+    }
+]

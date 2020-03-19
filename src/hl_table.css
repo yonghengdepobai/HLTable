@@ -1,6 +1,8 @@
 .hltabContainer {
     overflow-x: auto;
     border: 1px solid;
+    overflow-y: auto;
+    /* position: relative; */
 }
 
 .headRow {
@@ -10,7 +12,31 @@
     flex-shrink: 0;
     box-sizing: border-box;
 }
+.hl_All_head {
+    position: sticky; /* ie不兼容 要兼容就用relative 自已去计算top值  */
+    top: 0px;
+    z-index: 3;
+    background: #fafafa;
+}
 .hl_headGroup {
     display: flex;
     height: 30px;
+}
+.hlBody {
+    /* overflow-y: auto; */
+    box-sizing: border-box;
+    /* border: 1px solid; */
+}
+.hlBodyRow {
+    height: 30px;
+    text-align: center;
+    /* border: 1px solid #cdcdcd; */
+    flex-shrink: 0;
+    display: flex;
+}
+.hlBodyCol {
+    border: 1px solid #cdcdcd;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
